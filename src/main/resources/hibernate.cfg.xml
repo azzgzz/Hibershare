@@ -8,12 +8,13 @@
         <property name="connection.password">holopass</property>
         <property name="dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">validate</property>
 
         <mapping class="ru.azzgzz.data.Role" />
         <mapping class="ru.azzgzz.data.User" />
         <mapping class="ru.azzgzz.data.Order" />
         <mapping class="ru.azzgzz.data.Product" />
         <mapping class="ru.azzgzz.data.ProductCategory" />
+
     </session-factory>
 </hibernate-configuration>

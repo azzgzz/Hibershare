@@ -3,7 +3,7 @@ package ru.azzgzz.data;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
+@Entity(name = "Product")
 @Table(name = "product")
 public class Product extends Model {
 
@@ -55,6 +55,26 @@ public class Product extends Model {
     }
 
     public void setProductCategory(ProductCategory productCategory) {
+        this.productCategory = productCategory;
+    }
+
+    @Override
+    public String toString(){
+        return super.getId() + " - " + title + " - " + description + " - ";
+    }
+
+    public Product(String title, BigDecimal price, String description, ProductCategory productCategory) {
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.productCategory = productCategory;
+    }
+
+    public Product(Long id, String title, BigDecimal price, String description, ProductCategory productCategory) {
+        super(id);
+        this.title = title;
+        this.price = price;
+        this.description = description;
         this.productCategory = productCategory;
     }
 }
