@@ -1,13 +1,18 @@
 package ru.azzgzz.data;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table
 public class Role {
+    @Id
+    @GeneratedValue
+    @Column
     private Long id;
+    @Column
     private String title;
-
-    private Set<User> users = new HashSet<User>();
 
     public Role(){}
 
@@ -25,13 +30,5 @@ public class Role {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
     }
 }
