@@ -1,23 +1,18 @@
 package ru.azzgzz.data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private long id;
+public class User extends Model {
 
-    @Column
+    @Column(name = "age")
     private int age;
-    @Column(length = 30)
+    @Column(length = 30, name = "firstname")
     private String firstname;
-    @Column(length = 30)
+    @Column(length = 30, name = "lastname")
     private String lastname;
 
     @ManyToMany
@@ -32,21 +27,6 @@ public class User implements Serializable {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public User() {
-    }
-
-    public User(long id) {
-        this.id = id;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public int getAge() {

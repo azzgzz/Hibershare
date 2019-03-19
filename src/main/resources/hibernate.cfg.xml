@@ -12,5 +12,8 @@
 
         <mapping class="ru.azzgzz.data.Role" />
         <mapping class="ru.azzgzz.data.User" />
+        <mapping class="ru.azzgzz.data.Order" />
+        <mapping class="ru.azzgzz.data.Product" />
+        <mapping class="ru.azzgzz.data.ProductCategory" />
     </session-factory>
 </hibernate-configuration>
