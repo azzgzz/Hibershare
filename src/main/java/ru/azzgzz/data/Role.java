@@ -14,6 +14,9 @@ public class Role {
     @Column
     private String title;
 
+    @OneToMany(mappedBy = "role")
+    private Set<User> users = new HashSet<User>();
+
     public Role(){}
 
     public Long getId() {
