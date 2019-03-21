@@ -12,47 +12,28 @@ import java.util.List;
 
 public class SimpleBinanceParser {
 
-    private String url= "https://www.binance.com/ru";
-    private String title;
-    private String savePath;
+    private static String url= "https://www.binance.com/ru";
     private Document document;
 
     public static void main(String args[]) {
 
-        String gitUrl = "https://github.com/azzgzz/UrlDownloader/tree/master/UrlDownloader/src/ru/ncedu/iskandarov/urld";
-        String url = "https://www.binance.com/ru";
-        String path = "my_tests/";
 
         SimpleBinanceParser sjp = new SimpleBinanceParser(url);
-        sjp.setSavePath(path + sjp.getTitle().replaceAll("[/&^*%$:;\'\"`~<>]", "") + ".html");
 
-
-//        sjp.saveToFile();
         sjp.getTable();
 
-//        LocalDate date = LocalDate.now();
-//        LocalDateTime dateTime = LocalDateTime.now();
-//        System.out.println(dateTime.toLocalTime());
 
     }
 
     public SimpleBinanceParser(String url) {
         try {
             document = Jsoup.connect(url).get();
-            title = document.title();
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Cannot open url");
         }
     }
 
-    public String getSavePath() {
-        return savePath;
-    }
-
-    public void setSavePath(String savePath) {
-        this.savePath = savePath;
-    }
 
     public Document getDocument() {
         return document;
@@ -60,20 +41,6 @@ public class SimpleBinanceParser {
 
     public void setDocument(Document document) {
         this.document = document;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void saveToFile() {
-        try {
-            FileWriter fos = new FileWriter(savePath);
-            fos.write(document.toString());
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public List<BRow> getTable() {
