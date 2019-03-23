@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
 import ru.azzgzz.data.*;
+import ru.azzgzz.datapickup.binancedata.BRow;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,18 +16,7 @@ public class HibLoader {
 
     private static SessionFactory sessionFactory;
     private static StandardServiceRegistry registry;
-//    static {
-//        Configuration cfg = new Configuration().configure();
-//        cfg.addAnnotatedClass(ru.azzgzz.data.Product.class);
-//        cfg.addAnnotatedClass(ru.azzgzz.data.ProductCategory.class);
-//        cfg.addAnnotatedClass(ru.azzgzz.data.User.class);
-//        cfg.addAnnotatedClass(ru.azzgzz.data.Role.class);
-//        cfg.addAnnotatedClass(ru.azzgzz.data.Order.class);
-//        ServiceRegistry serviceRegistry  = new StandardServiceRegistryBuilder()
-//                .applySettings(cfg.getProperties())
-//                .build();
-//        sessionFactory = cfg.buildSessionFactory(serviceRegistry);
-//    }
+
 
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
@@ -40,7 +30,7 @@ public class HibLoader {
                 settings.put(Environment.URL, "jdbc:postgresql://localhost/hibernate");
                 settings.put(Environment.USER, "hibernate");
                 settings.put(Environment.PASS, "holopass");
-                settings.put(Environment.HBM2DDL_AUTO, "validate");
+                settings.put(Environment.HBM2DDL_AUTO, "create");
                 settings.put(Environment.SHOW_SQL, true);
 
                 registryBuilder.applySettings(settings);
@@ -52,6 +42,7 @@ public class HibLoader {
                 sources.addAnnotatedClass(Order.class);
                 sources.addAnnotatedClass(Product.class);
                 sources.addAnnotatedClass(ProductCategory.class);
+                sources.addAnnotatedClass(BRow.class);
                 Metadata metadata = sources.getMetadataBuilder().build();
 
                 sessionFactory = metadata.getSessionFactoryBuilder().build();

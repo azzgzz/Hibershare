@@ -1,24 +1,48 @@
 package ru.azzgzz.datapickup.binancedata;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "btc_market")
 public class BRow {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
+    @Column
     private String ticker;
+    @Column
     private String tickerBase;
+    @Column
     private String coinName;
+    @Column
     private double lastPrice;
+    @Column
     private double dayDelta;
+    @Column
     private double dayMax;
+    @Column
     private double dayMin;
+    @Column
     private double dayVolume;
-    private LocalDateTime timestamp;
+    @Column
+    private LocalDateTime dateTime;
 
     private BRow(){
-        timestamp = LocalDateTime.now();
+        dateTime = LocalDateTime.now();
     }
 
     public static BRow createBRow(){
         return new BRow();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTicker() {
@@ -110,9 +134,17 @@ public class BRow {
         this.dayVolume = Double.parseDouble(s);
     }
 
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
     @Override
     public String toString() {
         return ticker + "/" + tickerBase + "\t" + coinName + "\t" + lastPrice + "\t"
-                + dayDelta + "\t" + dayMax + "\t" + dayMin + "\t" + dayVolume + timestamp;
+                + dayDelta + "\t" + dayMax + "\t" + dayMin + "\t" + dayVolume + dateTime;
     }
 }

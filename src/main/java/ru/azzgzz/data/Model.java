@@ -1,7 +1,6 @@
 package ru.azzgzz.data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @MappedSuperclass
 public abstract class Model {
