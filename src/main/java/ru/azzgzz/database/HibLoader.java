@@ -30,7 +30,7 @@ public class HibLoader {
                 settings.put(Environment.URL, "jdbc:postgresql://localhost/hibernate");
                 settings.put(Environment.USER, "hibernate");
                 settings.put(Environment.PASS, "holopass");
-                settings.put(Environment.HBM2DDL_AUTO, "create");
+                settings.put(Environment.HBM2DDL_AUTO, "validate");
                 settings.put(Environment.SHOW_SQL, true);
 
                 registryBuilder.applySettings(settings);
